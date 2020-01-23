@@ -1,0 +1,355 @@
+////////////////////////////////////////////////////////// nav
+
+var navPos = [".problemImg", ".solution", ".team", ".contact"];
+/*  var navColours = ["#E80023", "#29A9E1", "#7C20D9", "#8BC540", "#FF5B00"];  */
+
+navWhite = false;
+navBlue = true;
+navHover = false;
+
+$(".n1, .n2, .n3, .n4").hover(
+  function() {
+    if (navBlue) {
+      $(this)
+        .stop()
+        .animate({ color: "#83E5FF" }, 130, "easeOutQuint");
+    } else {
+      $(this)
+        .stop()
+        .animate({ color: "#b3b3b3" }, 130, "easeOutQuint");
+    }
+  },
+  function() {
+    if (navWhite) {
+      $(this)
+        .stop()
+        .animate({ color: "#383838" }, 130, "easeOutQuint");
+    } else {
+      $(this)
+        .stop()
+        .animate({ color: "#f3f3ff" }, 130, "easeOutQuint");
+    }
+  }
+);
+
+$(".n1, .n2, .n3, .n4, .n5").click(function() {
+  $("html, body")
+    .stop()
+    .animate(
+      {
+        scrollTop: $(
+          navPos[
+            $(this)
+              .attr("class")
+              .substring(10) - 1
+          ]
+        ).position().top
+      },
+      760,
+      "easeInOutQuint"
+    );
+  return false;
+});
+
+$(".topNav").hover(
+  function() {
+    navHover = true;
+  },
+  function() {
+    navHover = false;
+    pozTop = $(window).scrollTop();
+    if (pozTop > 30) {
+      $(".topNav")
+        .stop()
+        .animate({ top: "-80px" }, 230, "easeOutQuint");
+      $(".hoverBtn").show();
+    }
+  }
+);
+
+$(".hoverBtn").hover(function() {
+  $(this).hide();
+  $(".topNav")
+    .stop()
+    .animate({ top: "0" }, 230, "easeOutQuint");
+});
+
+////////////////////////////////////////////////////////// on load
+
+$(".blueDude").css({ opacity: "0", "margin-left": "500px" });
+$(".dude1").css({ opacity: "0", "margin-left": "40px" });
+$(".dudette1").css({ opacity: "0", "margin-left": "-50px" });
+$(".dudette2").css({ opacity: "0", "margin-left": "-190px" });
+
+$(".dude").css({ opacity: "0", "margin-left": "440px" });
+$(".dudette").css({ opacity: "0", "margin-left": "170px" });
+$(".certs").css({ opacity: "0", "margin-left": "-30px" });
+$(".verified").css({ opacity: "0", "margin-left": "890px" });
+
+$(".blueDude")
+  .delay(300)
+  .animate({ marginLeft: "560px", opacity: 1 }, 900, "easeOutQuint");
+$(".dude1")
+  .delay(600)
+  .animate({ marginLeft: "100px", opacity: 1 }, 900, "easeOutQuint");
+$(".dudette1")
+  .delay(760)
+  .animate({ marginLeft: "10px", opacity: 1 }, 900, "easeOutQuint");
+$(".dudette2")
+  .delay(920)
+  .animate({ marginLeft: "-130px", opacity: 1 }, 900, "easeOutQuint");
+
+solutionRun = function() {
+  $(".dude")
+    .delay(300)
+    .animate({ marginLeft: "500px", opacity: 1 }, 900, "easeOutQuint");
+  $(".dudette")
+    .delay(500)
+    .animate({ marginLeft: "230px", opacity: 1 }, 900, "easeOutQuint");
+  $(".certs")
+    .delay(760)
+    .animate({ marginLeft: "30px", opacity: 1 }, 900, "easeOutQuint");
+  $(".verified")
+    .delay(920)
+    .animate({ marginLeft: "950px", opacity: 1 }, 900, "easeOutQuint");
+};
+
+////////////////////////////////////////////////////////// scroll events
+
+var position = $(window).scrollTop();
+solRun = true;
+
+$(window).scroll(function() {
+  var scroll = $(window).scrollTop();
+
+  var pozPr = $(".problem").position().top - 170;
+  var pozS = $(".solution").position().top - 30;
+  var pozSI = $(".solutionImg").position().top;
+  var pozTS = $(".techSpecs").position().top;
+  var pozT = $(".team").position().top;
+  var pozCI = $(".contactImg").position().top;
+  var pozC = $(".contact").position().top - 30;
+
+  if (scroll > position && !navHover) {
+    $(".topNav")
+      .stop()
+      .animate({ top: "-80px" }, 230, "easeOutQuint");
+    $(".hoverBtn").show();
+  } else if (!navHover) {
+    $(".topNav")
+      .stop()
+      .animate({ top: "0" }, 230, "easeOutQuint");
+    $(".hoverBtn").hide();
+  }
+
+  position = scroll;
+
+  if (scroll < pozPr) {
+    $(".topNav").css("background-color", "rgba(255,255,255,.05)");
+    $(".nav-link").css("color", "#f3f3ff");
+    $(".navbar-brand").css("color", "#383838");
+    navWhite = false;
+    navBlue = true;
+  } else if (scroll > pozSI && scroll < pozTS) {
+    $(".topNav").css("background-color", "rgba(239,239,239,.85)");
+    $(".nav-link").css("color", "#383838");
+    $(".navbar-brand").css("color", "#383838");
+    navWhite = true;
+    navBlue = false;
+  } else if (scroll > pozTS && scroll < pozT) {
+    $(".topNav").css("background-color", "rgba(71,71,84,.85)");
+    $(".nav-link").css("color", "#F3F3FF");
+    $(".navbar-brand").css("color", "#F3F3FF");
+    navWhite = false;
+    navBlue = false;
+  } else if (scroll > pozCI && scroll < pozC) {
+    $(".topNav").css("background-color", "rgba(52,186,232,.85)");
+    $(".nav-link").css("color", "#F3F3FF");
+    $(".navbar-brand").css("color", "#F3F3FF");
+    navWhite = false;
+    navBlue = true;
+  } else if (scroll > pozC) {
+    $(".topNav").css("background-color", "rgba(2,134,218,.85)");
+    $("a").css("color", "#F3F3FF");
+    $(".navbar-brand").css("color", "#F3F3FF");
+    navWhite = false;
+    navBlue = true;
+  } else {
+    $(".topNav").css("background-color", "rgba(255,255,255,.85)");
+    $(".nav-link").css("color", "#383838");
+    $(".navbar-brand").css("color", "#383838");
+    navWhite = true;
+    navBlue = false;
+  }
+
+  if (scroll > pozS && solRun) {
+    solutionRun();
+    solRun = false;
+  }
+});
+
+////////////////////////////////////////////////////////// contact
+
+$(".address, .email").hover(
+  function() {
+    $(this)
+      .stop()
+      .animate({ backgroundColor: "#0F9BE8" }, 360, "easeOutQuint");
+  },
+  function() {
+    $(this)
+      .stop()
+      .animate({ backgroundColor: "#0286DA" }, 360, "easeOutQuint");
+  }
+);
+
+$(".ykpp").click(function() {
+  $(this).hide();
+  $(".newsletter").show();
+});
+
+$(".email, .address").css("cursor", "pointer");
+
+$(".email").click(function() {
+  window.location = "mailto:bertifyme@blockchain-4SG.co.uk";
+});
+
+$(".address").click(function() {
+  window.open("https://goo.gl/maps/1XSqX6e9Lkz7iBVB7", "_blank");
+});
+
+////////////////////////////////////////////////////////// Subscription Send
+var subscriptionValidator = $("#subscriptionForm").validate({
+  rules: {
+    email: {
+      required: true,
+      email: true
+    }
+  },
+  messages: {
+    email: {
+      required: "Please enter your email",
+      email: "Email should have the format abc@domain.org"
+    }
+  },
+  submitHandler: function(form) {
+    $.ajax({
+      type: "POST",
+      url: "https://bertify-backend-v1-h62ikqjr6a-uc.a.run.app/api/subscribe",
+      data: $(form).serialize(),
+      beforeSend: function(xhr) {
+        $(".newsletterSubmintBtn").prop("disabled", true);
+        $(".newsletterSubmintBtn").text("Sending...");
+      },
+      success: function(result) {
+        $(".newsletterSubmintBtn").prop("disabled", false);
+        $(".newsletterSubmintBtn").text("Send");
+		enquiryValidator.resetForm();
+		
+		$('.newsForm').animate({ opacity: 0 }, 230, "easeOutQuint", function(){
+			$('#subscriptionSuccessMessage').css("opacity","0");
+			$('#subscriptionSuccessMessage').removeClass("d-none");
+			$('#subscriptionSuccessMessage').animate({ opacity: 1 }, 230, "easeOutQuint");
+		});
+        setTimeout(() => {
+			$('#subscriptionSuccessMessage').animate({ opacity: 0 }, 230, "easeOutQuint", function(){
+				$('#subscriptionSuccessMessage').addClass("d-none");
+				$('#subscriptionSuccessMessage').css("opacity","1");
+				$('.newsForm').animate({ opacity: 1 }, 230, "easeOutQuint");
+			});
+        }, 3000);
+		
+      },
+      error: function(xhr, status, error) {
+        $(".newsletterSubmintBtn").prop("disabled", false);
+        $(".newsletterSubmintBtn").text("Send");
+
+		$('.newsForm').animate({ opacity: 0 }, 230, "easeOutQuint", function(){
+			$('#subscriptionErrorMessage').css("opacity","0");
+			$('#subscriptionErrorMessage').removeClass("d-none");
+			$('#subscriptionErrorMessage').animate({ opacity: 1 }, 230, "easeOutQuint");
+		});
+        setTimeout(() => {
+			$('#subscriptionErrorMessage').animate({ opacity: 0 }, 230, "easeOutQuint", function(){
+				$('#subscriptionErrorMessage').addClass("d-none");
+				$('#subscriptionErrorMessage').css("opacity","1");
+				$('.newsForm').animate({ opacity: 1 }, 230, "easeOutQuint");
+			});
+        }, 3000);
+
+      }
+    });
+  }
+});
+
+////////////////////////////////////////////////////////// Enquiry Send
+var enquiryValidator = $("#enquiryForm").validate({
+  rules: {
+    name: {
+      required: true
+    },
+    email: {
+      required: true,
+      email: true
+    },
+    message: {
+      required: true,
+      minlength: 20
+    }
+  },
+  messages: {
+    name: { required: "Please enter your name" },
+    email: {
+      required: "Please enter your email",
+      email: "Email should have the format abc@domain.org"
+    },
+    message: { required: "Please enter your message" }
+  },
+  submitHandler: function(form) {
+    $.ajax({
+      type: "POST",
+      url: "https://bertify-backend-v1-h62ikqjr6a-uc.a.run.app/api/enquiry",
+      data: $(form).serialize(),
+      beforeSend: function(xhr) {
+        $(".messageSubmitBtn").prop("disabled", true);
+        $(".messageSubmitBtn").text("Sending...");
+      },
+      success: function(result) {
+        $(".messageSubmitBtn").prop("disabled", false);
+        $(".messageSubmitBtn").text("Send");
+		enquiryValidator.resetForm();
+		
+		$('.messageForm').animate({ opacity: 0 }, 230, "easeOutQuint", function(){
+			$('#enquirySuccessMessage').css("opacity","0");
+			$('#enquirySuccessMessage').removeClass("d-none");
+			$('#enquirySuccessMessage').animate({ opacity: 1 }, 230, "easeOutQuint");
+		});
+        setTimeout(() => {
+			$('#enquirySuccessMessage').animate({ opacity: 0 }, 230, "easeOutQuint", function(){
+				$('#enquirySuccessMessage').addClass("d-none");
+				$('#enquirySuccessMessage').css("opacity","1");
+				$('.messageForm').animate({ opacity: 1 }, 230, "easeOutQuint");
+			});
+        }, 3000);
+
+      },
+      error: function(xhr, status, error) {
+        $(".messageSubmitBtn").prop("disabled", false);
+        $(".messageSubmitBtn").text("Send");
+        
+		$('.messageForm').animate({ opacity: 0 }, 230, "easeOutQuint", function(){
+			$('#enquiryErrorMessage').css("opacity","0");
+			$('#enquiryErrorMessage').removeClass("d-none");
+			$('#enquiryErrorMessage').animate({ opacity: 1 }, 230, "easeOutQuint");
+		});
+        setTimeout(() => {
+			$('#enquiryErrorMessage').animate({ opacity: 0 }, 230, "easeOutQuint", function(){
+				$('#enquiryErrorMessage').addClass("d-none");
+				$('#enquiryErrorMessage').css("opacity","1");
+				$('.messageForm').animate({ opacity: 1 }, 230, "easeOutQuint");
+			});
+        }, 3000);
+      }
+    });
+  }
+});
