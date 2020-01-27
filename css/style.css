@@ -1,6 +1,11 @@
 @font-face {
-  font-family: "Shapiro-25SuperFly";
-  src: url("../fnt/39FAF4_0_0.woff");
+  font-family: "Shapiro25SuperFly";
+  src: url("../fnt/Shapiro25SuperFly.woff");
+}
+
+@font-face {
+  font-family: "Shapiro45Welter";
+  src: url("../fnt/Shapiro45Welter.ttf");
 }
 
 @font-face {
@@ -9,32 +14,41 @@
 }
 
 body {
-  font-family: "Shapiro-25SuperFly", Helvetica, sans-serif;
-  color: #383838;
+	font-family: "Shapiro45Welter", Helvetica, sans-serif;
+	color: #71747c;
+	background-color: #f7f7f7;
+	font-size: 16px;
 }
 
 h1 {
-  line-height: 2rem;
-  margin-bottom: 2rem;
-  font-size: 2.3rem;
-  letter-spacing: -0.008rem;
+	font-family: "Shapiro25SuperFly";
+	font-size: 48px;
+	letter-spacing: -1px;
+	line-height: 48px;
+	margin-bottom: 30px;
 }
 
-h3 {
-  font-size:1.5rem;
-  color:#b3b3b3;
+#logo {
+	height: 170px;
+	padding-top: 100px;
+	padding-left: 70px;
 }
 
+.copy {
+	padding-top: 110px;
+}
 
-/* //////////////////////    Nav    ///////////////////////////////////////////////// */
+.icon {
+	padding-top: 17px;
+}
 
+.app img {
+	position: absolute;
+}
 
-
-
-
-
-
-
+.verification {
+	margin-bottom: 90px;
+}
 
 
 
