@@ -28,6 +28,10 @@ h1 {
 	margin-bottom: 30px;
 }
 
+.container-fluid {
+	overflow: hidden;
+}
+
 #logo {
 	height: 170px;
 	padding-top: 100px;
@@ -42,11 +46,19 @@ h1 {
 	padding-top: 17px;
 }
 
+.app {
+	position: relative;
+}
+
 .app img {
 	position: absolute;
 }
 
-.verification {
+.secure .app img {
+	right: 0;
+}
+
+.verification, .secure, .organise, .signup {
 	margin-bottom: 90px;
 }
 
