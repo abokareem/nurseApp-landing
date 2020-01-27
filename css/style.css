@@ -59,12 +59,34 @@ h1 {
 	right: 0;
 }
 
-.verification, .secure, .organise, .signup {
+.verification, .illustration {
 	margin-bottom: 90px;
 }
 
+.footer {
+	text-align: center;
+	margin-bottom: 50px;
+}
 
+#social, #logoBertify {
+	width: 100%;
+}
 
+#social {
+	margin-bottom: 17px;
+}
+
+.link {
+	display: inline-block;
+}
+
+.link:first-of-type {
+	margin-right: 13px;
+}
+
+.link:nth-of-type(2) {
+	margin-right: 9px;
+}
 
 
 
